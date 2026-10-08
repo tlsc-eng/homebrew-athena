@@ -1,6 +1,6 @@
 cask "athena" do
-  version "0.2.0"
-  sha256 "0820fcec72320331715a6820bc075f7922e0e5035fb07151f1e87a5cf539ff1e"
+  version "0.3.0"
+  sha256 "08062e5dafcb91b9939bac2a4f1b9866f0078f03bba98a61cace4cab3db7c4f0"
 
   url "https://github.com/tlsc-eng/athena/releases/download/v#{version}/Athena-#{version}-arm64.zip"
   name "Athena"
