@@ -1,6 +1,6 @@
 cask "athena" do
-  version "0.1.0"
-  sha256 "b20366b1db77f6c051bda5a013ae0afdd44cc572cd1aee73027dc21d3915414d"
+  version "0.2.0"
+  sha256 "0820fcec72320331715a6820bc075f7922e0e5035fb07151f1e87a5cf539ff1e"
 
   url "https://github.com/tlsc-eng/athena/releases/download/v#{version}/Athena-#{version}-arm64.zip"
   name "Athena"
@@ -23,5 +23,12 @@ cask "athena" do
 
   uninstall quit: "io.tlsc.athena"
 
-  zap trash: "~/Library/Application Support/athena"
+  # Not in uninstall: upgrades run that stanza, and must leave running shells alone.
+  # By zap time the app is back in the staged path, so the relative executable resolves.
+  zap script: {
+        executable:   "Athena.app/Contents/MacOS/athena",
+        args:         ["mux", "stop"],
+        must_succeed: false,
+      },
+      trash:  "~/Library/Application Support/athena"
 end
